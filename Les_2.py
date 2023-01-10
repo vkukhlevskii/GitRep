@@ -90,12 +90,11 @@ mask=ip_mask[3].split('/')
 oct4=int(mask[0])
 mask0='/'+mask[1]
 mask=int(mask[1])
-mask_bin="1"*mask+"0"*(32-mask)
-mask_oct1=int(mask_bin[0:7],2)
-mask_oct2=int(mask_bin[8:15],2)
-mask_oct3=int(mask_bin[16:23],2)
-mask_oct4=int(mask_bin[24:31],2)
-
+mask_bin='1'*mask+'0'*(32-mask)
+mask_oct1=int(mask_bin[0:8],2)
+mask_oct2=int(mask_bin[8:16],2)
+mask_oct3=int(mask_bin[16:24],2)
+mask_oct4=int(mask_bin[24:32],2)
 ip_template = '''
 {0:<8}  {1:<8}  {2:<8}  {3:<8}
 {0:<08b}  {1:<08b}  {2:<08b}  {3:<08b}
