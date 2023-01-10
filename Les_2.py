@@ -23,7 +23,7 @@ london_co = {
     "routing": True
 }
 }
-
+'''
 #Excersice 5.1
 device_number = input('Введите номер устройства: ')
 print('\n' + '-' * 30)
@@ -48,3 +48,61 @@ str2 = 'Какой параметр Вас интересует ('+dev_keys+'): 
 parametr = input(str2)
 print('\n' + '-' * 30)
 print(london_co[device_number][parametr])
+
+#Excersice 5.1c
+dev_names=list(london_co.keys())
+dev_names=','.join(dev_names)
+str1 = 'Введите наименование устройства ('+dev_names+'): '
+device_number = input(str1)
+dev_keys=london_co[device_number].keys()
+dev_keys=','.join(dev_keys)
+str2 = 'Какой параметр Вас интересует ('+dev_keys+'): '
+parametr = input(str2)
+print('\n' + '-' * 30)
+result=london_co[device_number].get(parametr,'Такого параметра не существует!')
+print(result)
+
+#Excersice 5.1d
+dev_names=list(london_co.keys())
+dev_names=','.join(dev_names)
+str1 = 'Введите наименование устройства ('+dev_names+'): '
+device_number = input(str1)
+device_number=device_number.lower()
+dev_keys=london_co[device_number].keys()
+dev_keys=','.join(dev_keys)
+str2 = 'Какой параметр Вас интересует ('+dev_keys+'): '
+parametr = input(str2)
+parametr=parametr.lower()
+print('\n' + '-' * 30)
+result=london_co[device_number].get(parametr,'Такого параметра не существует!')
+print(result)
+'''
+
+#Excersice 5.2
+print('Программа поможет Вам преобразовать IP-адрес и маску подсети в двоичный формат'+'\n')
+ip_mask =input('Введите адрес в формате: 10.1.1.0/24 \n')
+print()
+ip_mask=ip_mask.split('.')
+oct1=int(ip_mask[0])
+oct2=int(ip_mask[1])
+oct3=int(ip_mask[2])
+mask=ip_mask[3].split('/')
+oct4=int(mask[0])
+mask0='/'+mask[1]
+mask=int(mask[1])
+mask_bin="1"*mask+"0"*(32-mask)
+mask_oct1=int(mask_bin[0:7],2)
+mask_oct2=int(mask_bin[8:15],2)
+mask_oct3=int(mask_bin[16:23],2)
+mask_oct4=int(mask_bin[24:31],2)
+
+ip_template = '''
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:<08b}  {1:<08b}  {2:<08b}  {3:<08b}
+'''
+mask_template = '''
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:<08b}  {1:<08b}  {2:<08b}  {3:<08b}
+'''
+print('Результат преобразования IP-адреса в двоичный формат:','\n',ip_template.format(oct1,oct2,oct3,oct4))
+print('Результат преобразования маски подсети в десятичный и двоичный форматы:'+'\n'*2+mask0,mask_template.format(mask_oct1,mask_oct2,mask_oct3,mask_oct4))
